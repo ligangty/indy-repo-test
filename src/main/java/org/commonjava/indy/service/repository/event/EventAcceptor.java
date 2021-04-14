@@ -33,9 +33,10 @@ public class EventAcceptor
     public static final String CHANNEL_STORE = "store-event";
 
     @Incoming( CHANNEL_STORE )
-    @Acknowledgment( Acknowledgment.Strategy.PRE_PROCESSING)
+    @Acknowledgment( Acknowledgment.Strategy.PRE_PROCESSING )
     public void accept( final IndyStoreEvent event )
     {
+        logger.info( "Incoming event: {}", event );
         switch ( event.getEventType() )
         {
             case PreUpdate:
